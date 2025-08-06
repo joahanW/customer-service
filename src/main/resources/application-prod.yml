@@ -1,0 +1,15 @@
+server:
+  port: 8080
+
+spring:
+  config:
+    import: aws-secretsmanager:/prod/johanwork/db/customer?prefix=db.
+  datasource:
+    url: jdbc:postgresql://${db.host}:5432/customer
+    username: ${db.username}
+    password: ${db.password}
+    driver-class-name: org.postgresql.Driver
+
+movie:
+  service:
+    url: http://movie-service:8080
